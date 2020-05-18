@@ -1,5 +1,6 @@
 import React from 'react'
-import InputFeild from './InputFeild'
+import InputFeild from '../Template/InputFeild'
+import OneLineGap from '../Template/OneLineGap'
 
 function SignUp() {
     return (
@@ -21,7 +22,7 @@ function SignUp() {
             <button className="ui button" type="submit">Submit</button>
       </form>
 
-        <br/>
+        <OneLineGap/>
         
       <div className="ui button"><a href="/">BACK TO HOME PAGE</a></div>
 

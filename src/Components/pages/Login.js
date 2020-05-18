@@ -1,5 +1,6 @@
 import React from 'react'
-import InputFeild from './InputFeild'
+import InputFeild from '../Template/InputFeild'
+import OneLineGap from '../Template/OneLineGap'
 
 function Login() {
 
@@ -7,17 +8,17 @@ function Login() {
        
         <div className="login">
 
-        <form className="ui form">
+        <div className="ui form">
         
         <InputFeild label="Email" type="email" name="email" placeholder="Email"/>
 
         <InputFeild label="Password" type="password" name="password" placeholder="Password"/>
-        
+
         <button className="ui button" type="submit">Submit</button>
 
-      </form>
+      </div>
 
-        <br/>
+      <OneLineGap/>
       <div className="ui button"><a href="/">BACK TO HOME PAGE</a></div>
 
       </div>
