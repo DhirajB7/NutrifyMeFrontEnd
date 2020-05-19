@@ -1,4 +1,4 @@
-.Home {
+.Home, .pageNotFound, .logout, .welcome {
   text-align: center;
   margin: 10%;
 }

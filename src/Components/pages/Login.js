@@ -9,9 +9,10 @@ class Login extends Component {
     username:'',
     password:'',
     token:'',
-    isUserLoggedIn:false
+    isUserLoggedIn:false,
+    isAdminLoggedIn:false,
+    redirect:false
   }
-
 
   usernameFetch = (data) =>{
     this.setState({
@@ -31,11 +32,31 @@ class Login extends Component {
 
            let data = UsernamePassword(username,password)
            data.then((a)=>{
+
              this.setState(
                {
-                 token:a.toString()
+                 token:a.authorization.toString(),
                }
              )
+
+             if(JSON.stringify(a.role).includes("ADMIN")){
+
+                this.setState({
+                  isAdminLoggedIn:true
+                })
+
+             }else{
+
+              this.setState({
+                isUserLoggedIn:true
+              })
+
+             }
+
+             this.setState({
+              redirect:true
+            })
+            
            }) 
 
           }else{
@@ -51,11 +72,10 @@ class Login extends Component {
   componentDidUpdate(){
     
      if(this.state.token.length > 10){
-       document.cookie = "Authorization="+this.state.token
-       document.cookie = "Username="+this.state.username
-       this.setState({
-         isUserLoggedIn:true
-       })
+       document.cookie = "Authorization="+this.state.token+"#"
+       document.cookie = "Username="+this.state.username+"#"
+       document.cookie = "isUserLoggedIn="+this.state.isUserLoggedIn+"#"
+       document.cookie = "isAdminLoggedIn="+this.state.isAdminLoggedIn+"#"
      }
 
   }
@@ -77,9 +97,9 @@ class Login extends Component {
       </div>
 
       <OneLineGap/>
-      
-      <div className="ui button"><a href="/">BACK TO HOME PAGE</a></div>
 
+      <div className="ui button"><a href="/">{(this.state.redirect) ? "LOGIN SUCESSFULL CLICK HERE" : "BACK TO HOME PAGE"}</a></div>
+      
       </div>
 
     )

@@ -1,10 +1,10 @@
 import React from 'react'
 import NavBar from './NavBar'
 
-function PageTemplate(props) {
+function PageTemplate() {
     
     return (
-            <NavBar isUserLoggedIn={props.isUserLoggedIn}/>
+            <NavBar/>
         )
 }
 
