@@ -4,33 +4,13 @@ import { getValueFromCookie } from '../API/CookieOperations'
 
 class Welcome extends Component {
 
-   state = {
-        role:''
-   }
-
-   componentDidMount(){
-       if(getValueFromCookie('isUserLoggedIn')==='true'){
-
-        this.setState({
-            role:"USER"
-        })
-
-       }else{
-
-        this.setState({
-            role:"ADMIN"
-        })
-
-
-       }
-   }
 
     render() {
         return (
             <React.Fragment>
                 <PageTemplate/>
             <div className="welcome">  
-                <h1>ROLE {this.state.role}</h1>
+                <h1>I AM WELCOME PAGE</h1>
             </div>
             </React.Fragment>
             

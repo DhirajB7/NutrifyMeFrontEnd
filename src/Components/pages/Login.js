@@ -1,109 +1,100 @@
-import React, { Component } from 'react'
-import InputFeild from '../Template/InputFeild'
-import OneLineGap from '../Template/OneLineGap'
-import UsernamePassword from '../API/UsernamePassword'
+import React, { Component } from "react";
+import InputFeild from "../Template/InputFeild";
+import OneLineGap from "../Template/OneLineGap";
+import UsernamePassword from "../API/UsernamePassword";
+import { Redirect } from "react-router-dom";
+
 
 class Login extends Component {
-
   state = {
-    username:'',
-    password:'',
-    token:'',
-    isUserLoggedIn:false,
-    isAdminLoggedIn:false,
-    redirect:false
-  }
+    username: "",
+    password: "",
+    token: "",
+    isUserLoggedIn: false,
+    isAdminLoggedIn: false,
+    redirect: false,
+  };
 
-  usernameFetch = (data) =>{
+  usernameFetch = (data) => {
     this.setState({
-      username:data
-    })
-  }
+      username: data,
+    });
+  };
 
-  passwordFetch = (data) =>{
-   this.setState({
-     password:data
-   })
-  }
+  passwordFetch = (data) => {
+    this.setState({
+      password: data,
+    });
+  };
 
-  validateUserNameAndPassword = (username,password) =>{
+  validateUserNameAndPassword = (username, password) => {
+    if (!(username === "" || password === "")) {
+      let data = UsernamePassword(username, password);
+      data.then((a) => {
+        if (JSON.stringify(a.role).includes("ADMIN")) {
+          this.setState({
+            isAdminLoggedIn: true,
+            token: a.authorization.toString(),
+            redirect: true,
+          });
+        } else {
+          this.setState({
+            isUserLoggedIn: true,
+            token: a.authorization.toString(),
+            redirect: true,
+          });
+        }
 
-          if(!(username==='' || password==='')){
+        document.cookie = "Authorization="+this.state.token+"#"
+        document.cookie = "Username="+this.state.username+"#"
+        document.cookie = "isUserLoggedIn="+this.state.isUserLoggedIn+"#"
+        document.cookie = "isAdminLoggedIn="+this.state.isAdminLoggedIn+"#"
 
-           let data = UsernamePassword(username,password)
-           data.then((a)=>{
-
-             this.setState(
-               {
-                 token:a.authorization.toString(),
-               }
-             )
-
-             if(JSON.stringify(a.role).includes("ADMIN")){
-
-                this.setState({
-                  isAdminLoggedIn:true
-                })
-
-             }else{
-
-              this.setState({
-                isUserLoggedIn:true
-              })
-
-             }
-
-             this.setState({
-              redirect:true
-            })
-            
-           }) 
-
-          }else{
-            alert("WRONG USERNAME OR WORNG PASSWORD, TRY AGAIN.")
-          }
-   
-  }
-
-  loginClicked = () =>{
-    this.validateUserNameAndPassword(this.state.username,this.state.password)
-  }
-
-  componentDidUpdate(){
-    
-     if(this.state.token.length > 10){
-       document.cookie = "Authorization="+this.state.token+"#"
-       document.cookie = "Username="+this.state.username+"#"
-       document.cookie = "isUserLoggedIn="+this.state.isUserLoggedIn+"#"
-       document.cookie = "isAdminLoggedIn="+this.state.isAdminLoggedIn+"#"
-     }
-
-  }
-
-  render(){
-
-    return(
-       
-        <div className="login">
-
-        <div className="ui form">
-        
-        <InputFeild label="Username" type="text" placeholder="username" getValue={this.usernameFetch}/>
-
-        <InputFeild label="Password" type="password" placeholder="Password" getValue={this.passwordFetch}/>
-
-        <button className="ui button" onClick={this.loginClicked}>LOGIN</button>
-
-      </div>
-
-      <OneLineGap/>
-
-      <div className="ui button"><a href="/">{(this.state.redirect) ? "LOGIN SUCESSFULL CLICK HERE" : "BACK TO HOME PAGE"}</a></div>
-      
-      </div>
-
-    )
+      });
+    } else {
+      alert("WRONG USERNAME OR WORNG PASSWORD, TRY AGAIN.");
     }
+  };
+
+  loginClicked = () => {
+    this.validateUserNameAndPassword(this.state.username, this.state.password);
+  };
+
+  render() {
+    if (this.state.redirect) {
+      return <Redirect to="/welcome" />;
+    } else {
+      return (
+        <div className="login">
+          <div className="ui form">
+            <InputFeild
+              label="Username"
+              type="text"
+              placeholder="username"
+              getValue={this.usernameFetch}
+            />
+
+            <InputFeild
+              label="Password"
+              type="password"
+              placeholder="Password"
+              getValue={this.passwordFetch}
+            />
+
+            <button className="ui button" onClick={this.loginClicked}>
+              LOGIN
+            </button>
+          </div>
+
+          <OneLineGap />
+
+          <div className="ui button">
+            <a href="/">BACK TO HOME PAGE</a>
+          </div>
+        </div>
+      );
+    }
+  }
 }
 
-export default Login
+export default Login;

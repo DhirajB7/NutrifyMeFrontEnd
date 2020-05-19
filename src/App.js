@@ -6,15 +6,11 @@ import SignUp from './Components/pages/SignUp'
 import HomePage from './Components/pages/HomePage'
 import Welcome from './Components/pages/Welcome'
 import Logout from './Components/pages/Logout'
-import { getValueFromCookie } from './Components/API/CookieOperations'
 import PageNotFound from './Components/pages/PageNotFound'
 
 
-function App() {
+function App(){
 
-  const isUser = getValueFromCookie('isUserLoggedIn') === 'true'
-
-  const isAdmin = getValueFromCookie('isAdminLoggedIn') === 'true'
 
   return (
 
@@ -22,9 +18,10 @@ function App() {
 
       <Switch>
 
-      <Route path = "/" exact component={(isUser || isAdmin) ? Welcome : HomePage} />
+      <Route path = "/" exact component={HomePage} />
       <Route path = "/login"  component={Login} />
       <Route path = "/signup" component={SignUp} />
+      <Route path = "/welcome" component={Welcome}/>
       <Route path = "/logout" component={Logout}/>
       <Route component={PageNotFound}/>
 
@@ -35,7 +32,8 @@ function App() {
     </Router>
 
     
-  );
-}
+  )
+   }
+
 
 export default App;

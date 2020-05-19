@@ -1,9 +1,7 @@
 export function getValueFromCookie(data){
-    if(document.cookie.length>10){
-        return document.cookie.split(data)[1].toString().split("#")[0].toString().substr(1)
-    }else{
-        return "no data"
-    }
+ 
+        return localStorage.getItem(data)
+    
   }
 
 
