@@ -1,14 +1,30 @@
 import React from 'react'
+import UserCardsThree from './UserCardsThree'
 import PageTemplate from './PageTemplate'
+import GetAllUsers from '../API/GetAllUsers'
+
+
 
 function AdminOperationOptions() {
+
+
     return (
+        
         <React.Fragment>
+
             <PageTemplate/>
-        <div className="welcome">  
-            <h1>WELCOME PAGE</h1>
-            <h3>YOU ARE ADMIN</h3>
+
+
+        <div className = "cards-display">
+            
+           <UserCardsThree/>
+
+           <UserCardsThree/>
+
+           <UserCardsThree/>
+           
         </div>
+
         </React.Fragment>
         
     ) 

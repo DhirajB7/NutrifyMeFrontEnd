@@ -1,15 +1,14 @@
 import React from 'react'
 import { deleteAllCookies } from '../API/CookieOperations'
+import { Redirect } from 'react-router-dom';
 
 function Logout() {
 
   deleteAllCookies()
 
-    return (
-      <div className="logout">
-        <h1>SUCESSFULLY LOGGED OUT</h1>
-      </div>
-    )
+  alert("SUCESSFULLY LOGGED OUT.")
+
+  return <Redirect to="/login" />;
 }
 
 export default Logout

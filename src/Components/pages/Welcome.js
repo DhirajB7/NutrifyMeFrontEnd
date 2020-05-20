@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PageTemplate from '../Template/PageTemplate'
 import PreLoader from '../Template/PreLoader'
 import { getValueFromCookie } from '../API/CookieOperations'
 import UserOperationOptions from '../Template/UserOperationOptions'
@@ -25,9 +24,7 @@ class Welcome extends Component {
     render() {
 
         if(this.dataReady()){
-
-            console.log(document.cookie)
-
+            
            const isUser = getValueFromCookie("isUserLoggedIn")==="true";
 
            const isAdmin = getValueFromCookie("isAdminLoggedIn")==="true";

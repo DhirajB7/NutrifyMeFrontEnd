@@ -1,7 +1,7 @@
-import axios from 'axios'
+import Axios from 'axios'
 
 
-const baseURL = "http://127.0.0.1:8080/login"
+const baseURL = 'http://localhost:8080/login'
 
 /**
  * @return json with auth and role
@@ -18,7 +18,7 @@ async function UsernamePassword(username,password) {
     let flag = false
 
     let key = ''
-      await axios.post(baseURL,JSON.stringify(bodyData))
+      await Axios.post(baseURL,JSON.stringify(bodyData))
                     .then((response)=> key = response.data)
                     .catch(()=>{
                         flag = true;
