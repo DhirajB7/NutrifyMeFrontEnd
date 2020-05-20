@@ -5,6 +5,7 @@ import UsernamePassword from "../API/UsernamePassword";
 import { Redirect } from "react-router-dom";
 
 
+
 class Login extends Component {
   state = {
     username: "",
@@ -49,6 +50,9 @@ class Login extends Component {
         document.cookie = "Username="+this.state.username+"#"
         document.cookie = "isUserLoggedIn="+this.state.isUserLoggedIn+"#"
         document.cookie = "isAdminLoggedIn="+this.state.isAdminLoggedIn+"#"
+        console.log("data added to cookie")
+       
+
 
       });
     } else {

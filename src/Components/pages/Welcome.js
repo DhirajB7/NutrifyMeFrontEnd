@@ -1,20 +1,57 @@
 import React, { Component } from 'react'
 import PageTemplate from '../Template/PageTemplate'
+import PreLoader from '../Template/PreLoader'
 import { getValueFromCookie } from '../API/CookieOperations'
+import UserOperationOptions from '../Template/UserOperationOptions'
+import AdminOperationOptions from '../Template/AdminOperationOptions'
+import PageNotFound from './PageNotFound'
 
 class Welcome extends Component {
 
+    state = {
+        isDataReady:false
+    }
+
+    dataReady = () => {
+        if(document.cookie.length>10){
+            return true
+        }else{
+            window.location.reload() //important else page will be stuck in preloader
+            return false
+        }
+    }
+
 
     render() {
-        return (
-            <React.Fragment>
-                <PageTemplate/>
-            <div className="welcome">  
-                <h1>I AM WELCOME PAGE</h1>
-            </div>
-            </React.Fragment>
-            
-        ) 
+
+        if(this.dataReady()){
+
+            console.log(document.cookie)
+
+           const isUser = getValueFromCookie("isUserLoggedIn")==="true";
+
+           const isAdmin = getValueFromCookie("isAdminLoggedIn")==="true";
+
+          if(isUser){
+
+           return <UserOperationOptions/>
+
+          }else if(isAdmin){
+
+           return  <AdminOperationOptions/>
+
+          }else{
+
+           return <PageNotFound/>
+
+          }
+        }else{
+            return(
+                <PreLoader/>
+            )
+        }
+
+       
     }
 }
 

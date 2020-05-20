@@ -1,6 +1,6 @@
 export function getValueFromCookie(data){
  
-        return localStorage.getItem(data)
+        return document.cookie.split(data)[1].split("#")[0].substr(1)
     
   }
 
