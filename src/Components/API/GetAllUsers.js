@@ -1,24 +1,27 @@
-// import Axios from 'axios'
-// import {getValueFromCookie} from './CookieOperations'
+import Axios from 'axios'
+import {getValueFromCookie} from './CookieOperations'
 
-// const baseUrl = "http://127.0.0.1:8080/user/all"
+async function GetAllUsers(){
 
-// const token = getValueFromCookie("Authorization")
+    const baseUrl = "http://localhost:8080"
 
-
-// async function GetAllUsers(){
+    const token = getValueFromCookie("Authorization")
  
-//     console.log(token)
+    console.log("I AM MEATHOD GetAllUsers : " +token.trim())
 
-//      await Axios.get(baseUrl,
-//         {
-//              headers: { 'Authorization': token } 
-//             }
-//             )
-//             .then((a) => {console.log(a)})
-//              .catch(()=>console.log("ERROR ERROR"))
-// }
+    const authAxios = Axios.create(
+        {
+            baseURL : baseUrl,
+             headers:{
+                 Authorization:token
+             }
+        }
+    )
 
-// export default GetAllUsers()
+    let res =  await authAxios.get('/user/all').then((a) => JSON.stringify(a))
 
+            console.log("RESPONSE IS " + res)
+           
+}
 
+export default GetAllUsers

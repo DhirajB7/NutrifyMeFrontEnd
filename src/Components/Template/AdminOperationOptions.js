@@ -8,6 +8,11 @@ import GetAllUsers from '../API/GetAllUsers'
 function AdminOperationOptions() {
 
 
+
+    GetAllUsers()
+
+
+
     return (
         
         <React.Fragment>

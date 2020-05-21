@@ -25,9 +25,9 @@ class Welcome extends Component {
 
         if(this.dataReady()){
             
-           const isUser = getValueFromCookie("isUserLoggedIn")==="true";
+           const isUser = getValueFromCookie("isUserLoggedIn")==="true"
 
-           const isAdmin = getValueFromCookie("isAdminLoggedIn")==="true";
+           const isAdmin = getValueFromCookie("isAdminLoggedIn")==="true"
 
           if(isUser){
 
