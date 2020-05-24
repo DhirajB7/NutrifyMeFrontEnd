@@ -8,18 +8,15 @@ import GetAllUsers from '../API/GetAllUsers'
 function AdminOperationOptions() {
 
 
-
-    GetAllUsers()
-
-
+   console.log(GetAllUsers())
 
     return (
         
-        <React.Fragment>
+        <div>
 
             <PageTemplate/>
 
-
+ 
         <div className = "cards-display">
             
            <UserCardsThree/>
@@ -28,9 +25,9 @@ function AdminOperationOptions() {
 
            <UserCardsThree/>
            
-        </div>
+        </div> 
 
-        </React.Fragment>
+        </div>
         
     ) 
 }

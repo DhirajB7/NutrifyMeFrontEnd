@@ -1,27 +1,21 @@
 import Axios from 'axios'
-import {getValueFromCookie} from './CookieOperations'
+import { getValueFromCookie } from "./CookieOperations";
+import { BaseURL } from './Properties';
+
+const path = '/user/all'
+
+const token =  getValueFromCookie("Authorization").trim()
 
 async function GetAllUsers(){
 
-    const baseUrl = "http://localhost:8080"
-
-    const token = getValueFromCookie("Authorization")
- 
-    console.log("I AM MEATHOD GetAllUsers : " +token.trim())
-
-    const authAxios = Axios.create(
-        {
-            baseURL : baseUrl,
-             headers:{
-                 Authorization:token
-             }
-        }
-    )
-
-    let res =  await authAxios.get('/user/all').then((a) => JSON.stringify(a))
-
-            console.log("RESPONSE IS " + res)
-           
+ return await Axios.get(BaseURL+path,{ headers: { Authorization: token}})
+                        .then((response)=>{
+                        return response.data
+                        })
+                        .catch((err) => {
+                        alert("NO DATA FETCHED FROM BACKEND.")
+                        })
+   
 }
 
 export default GetAllUsers

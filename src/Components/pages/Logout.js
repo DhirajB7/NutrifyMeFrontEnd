@@ -6,9 +6,12 @@ function Logout() {
 
   deleteAllCookies()
 
-  alert("SUCESSFULLY LOGGED OUT.")
 
-  return <Redirect to="/login" />;
+  return (
+
+    <Redirect to="/login" />
+     
+    )
 }
 
 export default Logout

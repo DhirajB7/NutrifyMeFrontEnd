@@ -13,7 +13,7 @@ function UserCardsThree() {
             phone = "123456"
             role = "ADMIN,USER"
             cpd = "34.456"
-            status = "true"
+            status = "active"
             />
 
             <UserCard 
@@ -24,7 +24,7 @@ function UserCardsThree() {
             phone = "123456"
             role = "ADMIN,USER"
             cpd = "34.456"
-            status = "true"
+            status = "active"
             />
 
             <UserCard 
@@ -35,7 +35,7 @@ function UserCardsThree() {
             phone = "123456"
             role = "ADMIN,USER"
             cpd = "34.456"
-            status = "true"
+            status = "active"
             />
             
         </div>
