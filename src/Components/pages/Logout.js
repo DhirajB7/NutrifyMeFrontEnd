@@ -5,6 +5,9 @@ import { Redirect } from 'react-router-dom';
 function Logout() {
 
   deleteAllCookies()
+  localStorage.clear()
+
+  alert("SUCESSFULLY LOGGED OUT")
 
 
   return (

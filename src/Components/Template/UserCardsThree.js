@@ -1,45 +1,44 @@
 import React from 'react'
 import UserCard from './UserCard'
+import PreLoader from './PreLoader';
+import OneLineGap from './OneLineGap'
 
-function UserCardsThree() {
-    return (
-        <div div className = "ui three cards">
+function UserCardsThree(props) {
 
-            <UserCard 
-            firstname = "first" 
-            lastname = "last" 
-            username = "fl789"
-            email = "fl@abc.com"
-            phone = "123456"
-            role = "ADMIN,USER"
-            cpd = "34.456"
-            status = "active"
-            />
+ 
+    if(props.userDataArray==="loading"){
 
-            <UserCard 
-            firstname = "first" 
-            lastname = "last" 
-            username = "fl789"
-            email = "fl@abc.com"
-            phone = "123456"
-            role = "ADMIN,USER"
-            cpd = "34.456"
-            status = "active"
-            />
+        return (
+            <PreLoader/>
+        )
 
-            <UserCard 
-            firstname = "first" 
-            lastname = "last" 
-            username = "fl789"
-            email = "fl@abc.com"
-            phone = "123456"
-            role = "ADMIN,USER"
-            cpd = "34.456"
-            status = "active"
-            />
+    }else{
+ 
+   
+
+     return(
+
+            <React.Fragment>
+
+                <h1 className="ui center violet aligned header">LIST OF USERS</h1>
+
+                <OneLineGap/>
+
+            <div  className = "ui three cards">
+
+
+            {props.userDataArray.map(element => {
+                return  (<UserCard key ={element.username} obj={element}/>)
+            })}
             
-        </div>
-    )
+    
+            </div>
+
+            </React.Fragment>
+
+        )
+    }
+   
 }
 
 export default UserCardsThree

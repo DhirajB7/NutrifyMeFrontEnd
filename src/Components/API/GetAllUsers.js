@@ -4,17 +4,30 @@ import { BaseURL } from './Properties';
 
 const path = '/user/all'
 
-const token =  getValueFromCookie("Authorization").trim()
-
 async function GetAllUsers(){
 
- return await Axios.get(BaseURL+path,{ headers: { Authorization: token}})
+  const token =  getValueFromCookie("Authorization").trim()
+
+    
+    let flag = false
+
+    let key = ''
+
+  await Axios.get(BaseURL+path,{ headers: { Authorization: token}})
                         .then((response)=>{
-                        return response.data
+                        key = response
                         })
                         .catch((err) => {
+                          flag = true
+                          console.log(err)
                         alert("NO DATA FETCHED FROM BACKEND.")
                         })
+
+
+                        if(!flag){
+                          localStorage.setItem("usersLength",key.data.length)
+                          return key
+                         }
    
 }
 

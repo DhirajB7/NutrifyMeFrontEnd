@@ -1,35 +1,45 @@
-import React from 'react'
-import UserCardsThree from './UserCardsThree'
-import PageTemplate from './PageTemplate'
-import GetAllUsers from '../API/GetAllUsers'
+import React, { Component } from "react";
+import PageTemplate from "./PageTemplate";
+import GetAllUsers from "../API/GetAllUsers";
+import UserCardsThree from "./UserCardsThree";
 
 
+class AdminOperationOptions extends Component {
 
-function AdminOperationOptions() {
+  state = {
+    userData: []
+  };
 
+  componentDidMount() {
 
-   console.log(GetAllUsers())
+    let data = GetAllUsers();
 
-    return (
-        
-        <div>
-
-            <PageTemplate/>
+    data.then((a) => {
+      a.data.forEach((element) => {
+        this.setState({
+          userData: this.state.userData.concat(element)
+        });
+      });
+    });
+  }
 
  
-        <div className = "cards-display">
-            
-           <UserCardsThree/>
 
-           <UserCardsThree/>
+  render() {
 
-           <UserCardsThree/>
-           
-        </div> 
+    return (
+      <div>
+        <PageTemplate/>
 
+        <div className="cards-display">
+          
+          <UserCardsThree userDataArray = {(this.state.userData.length===parseInt(localStorage.getItem("usersLength")))?this.state.userData:"loading"}/>
+          
         </div>
-        
-    ) 
+      </div>
+    )
+    
+  }
 }
 
-export default AdminOperationOptions
+export default AdminOperationOptions;

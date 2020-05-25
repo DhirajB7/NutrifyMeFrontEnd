@@ -11,10 +11,12 @@
 
 .edit{
   color:blue;
+  cursor: pointer;
 }
 
 .delete{
   color: red;
+  cursor: pointer;
 }
 
 .data-name{
@@ -27,4 +29,9 @@
 
 .cards-display{
   margin: 16px;
+}
+
+.signupLogin{
+  margin-top: 2%;
+  margin-left: 2%;
 }

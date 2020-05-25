@@ -46,6 +46,8 @@ class Login extends Component {
           });
         }
 
+
+       
         document.cookie = "Authorization="+this.state.token+"#"
         document.cookie = "Username="+this.state.username+"#"
         document.cookie = "isUserLoggedIn="+this.state.isUserLoggedIn+"#"
@@ -68,6 +70,10 @@ class Login extends Component {
       return (
         <div className="login">
           <div className="ui form">
+
+          <h1 className="ui center violet aligned header">SIGN IN</h1>
+
+
             <InputFeild
               label="Username"
               type="text"
@@ -83,7 +89,7 @@ class Login extends Component {
             />
 
             <button className="ui button" onClick={this.loginClicked}>
-              LOGIN
+              SIGN IN
             </button>
           </div>
 
