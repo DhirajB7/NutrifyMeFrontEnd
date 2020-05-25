@@ -14,6 +14,25 @@ class UserCard extends Component {
     window.location.reload()
   }
 
+  editClicked = () =>{
+    console.log(this.props.obj.username)
+
+    this.setState({
+      isEditClicked : true
+    })
+
+  }
+
+  saveClicked = () =>{
+    console.log(this.props.obj.username)
+
+    this.setState({
+      isEditClicked : false
+    })
+
+    //put request
+
+  }
 
 
 
@@ -32,7 +51,11 @@ class UserCard extends Component {
             <div className="date"> <span className="data-name">PHONE : </span> <span className="data-value">{this.props.obj.phone}</span></div>
             <br/>
             <div className="date"> <span className="data-name">ROLE : </span> 
+
+            {(this.state.isEditClicked) ?
+
               <span className="data-value">
+                
                 
                         <select className="ui dropdown data-value">
                           <option value="">{(this.props.obj.role.indexOf(",")>0)?this.props.obj.role.split(",")[0]+" & "+this.props.obj.role.split(",")[1]:this.props.obj.role}</option>
@@ -41,11 +64,19 @@ class UserCard extends Component {
                           <option value="3">USER & ADMIN</option>
                         </select>
               </span>
+              :
+              <span className="data-value">
+                
+                          {(this.props.obj.role.indexOf(",")>0)?this.props.obj.role.split(",")[0]+" & "+this.props.obj.role.split(",")[1]:this.props.obj.role}
+              </span>
+  }
             </div>
             <br/>
             <div className="date"> <span className="data-name">CALORIES PER DAY : </span> <span className="data-value">{this.props.obj.caloriesPerDay}</span></div>
             <br/>
             <div className="date"> <span className="data-name">USER STATUS : </span>
+
+            {(this.state.isEditClicked) ?
              <span className="data-value">
                <select className="ui dropdown data-value">
                           <option value=""> {(this.props.obj.userStatus)?"ACTIVE":"INACTIVE"}</option>
@@ -53,6 +84,16 @@ class UserCard extends Component {
                           <option value="2">INACTIVE</option>
                         </select>
                </span>
+
+               :
+
+               <span className="data-value">
+               
+                {(this.props.obj.userStatus)?"ACTIVE":"INACTIVE"}
+                          
+               </span>
+
+            }
                </div>
         </div>
       </div>
@@ -61,6 +102,16 @@ class UserCard extends Component {
       <div className="right floated delete" onClick = {this.deleteClicked}>
       <i className="trash icon"/>DELETE
       </div>
+
+    {(this.state.isEditClicked) ?
+      <div className="save edit" onClick = {this.saveClicked}>
+      <i className="save icon"/>SAVE
+      </div>
+      :
+      <div className="left edit" onClick = {this.editClicked}>
+      <i className="edit icon"/>EDIT
+      </div>
+    }
 
     </div>
     </div>
