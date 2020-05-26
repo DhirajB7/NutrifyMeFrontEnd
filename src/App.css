@@ -14,6 +14,11 @@
   cursor: pointer;
 }
 
+.save{
+  color:green;
+  cursor: pointer;
+}
+
 .delete{
   color: red;
   cursor: pointer;

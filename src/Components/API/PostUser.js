@@ -2,7 +2,7 @@ import { BaseURL } from './Properties';
 
 
 
-async function PostUser(data){
+ function PostUser(data){
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
