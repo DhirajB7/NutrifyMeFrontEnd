@@ -1,10 +1,10 @@
 import React from 'react'
 import NavBar from './NavBar'
 
-function PageTemplate() {
+function PageTemplate(props) {
     
     return (
-            <NavBar/>
+            <NavBar isUser={props.isUser}/>
         )
 }
 

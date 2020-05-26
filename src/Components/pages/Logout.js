@@ -7,7 +7,7 @@ function Logout() {
   deleteAllCookies()
   localStorage.clear()
 
-  alert("SUCESSFULLY LOGGED OUT")
+ // alert("SUCESSFULLY LOGGED OUT")  //REMOVE BEFORE COMMIT
 
 
   return (

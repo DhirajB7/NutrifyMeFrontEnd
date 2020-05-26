@@ -1,45 +1,26 @@
-import React, { Component } from "react";
-import PageTemplate from "./PageTemplate";
-import GetAllUsers from "../API/GetAllUsers";
-import UserCardsThree from "./UserCardsThree";
+import React from "react";
+import AdminUsers from "./AdminUsers";
+import AdminMeal from "./AdminMeal";
+import PageNotFound from "./PageNotFound";
 
 
-class AdminOperationOptions extends Component {
 
-  state = {
-    userData: []
-  };
+function AdminOperationOptions(props) {  
 
-  componentDidMount() {
-
-    let data = GetAllUsers();
-
-    data.then((a) => {
-      a.data.forEach((element) => {
-        this.setState({
-          userData: this.state.userData.concat(element)
-        });
-      });
-    });
-  }
-
- 
-
-  render() {
-
+  if(props.toOpen==="users"){
     return (
-      <div>
-        <PageTemplate/>
-
-        <div className="cards-display">
-          
-          <UserCardsThree userDataArray = {(this.state.userData.length===parseInt(localStorage.getItem("usersLength")))?this.state.userData:"loading"}/>
-          
-        </div>
-      </div>
+        <AdminUsers/>
     )
-    
+  }else if(props.toOpen==="meals"){
+    return (
+      <AdminMeal/>
+      )
+  }else{
+    return(
+      <PageNotFound/>
+    )
   }
+
 }
 
 export default AdminOperationOptions;

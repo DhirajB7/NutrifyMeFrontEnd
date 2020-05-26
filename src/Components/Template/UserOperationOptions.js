@@ -1,17 +1,40 @@
 import React from 'react'
-import PageTemplate from './PageTemplate'
+import PageNotFound from './PageNotFound'
+import AdminMeal from './AdminMeal'
+import UserHome from './UserHome'
+import UserHistory from './UserHistory'
 
-function UserOperationOptions() {
-    return (
-        <React.Fragment>
-            <PageTemplate/>
-        <div className="welcome">  
-            <h1>WELCOME PAGE</h1>
-            <h3>YOU ARE USER</h3>
-        </div>
-        </React.Fragment>
-        
-    ) 
+function UserOperationOptions(props) {
+
+    if(props.toOpen==="home"){
+
+        return(
+
+           <UserHome/>
+
+        )
+
+    }else if(props.toOpen==="history"){
+
+        return(
+
+           <UserHistory/>
+
+            )
+
+    }else if(props.toOpen==="meals"){
+
+        return(
+
+            <AdminMeal/>
+            
+            )
+
+    }else{
+        return(
+            <PageNotFound/>
+        )
+    }
 }
 
 export default UserOperationOptions

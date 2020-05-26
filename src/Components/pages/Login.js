@@ -13,7 +13,7 @@ class Login extends Component {
     token: "",
     isUserLoggedIn: false,
     isAdminLoggedIn: false,
-    redirect: false,
+    redirect: false
   };
 
   usernameFetch = (data) => {
@@ -64,9 +64,11 @@ class Login extends Component {
   };
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to="/welcome" />;
-    } else {
+    if (this.state.redirect && this.state.isAdminLoggedIn) {
+      return <Redirect to="/users" />;
+    } else if(this.state.redirect && this.state.isUserLoggedIn){
+      return <Redirect to="/home" />;
+    }else {
       return (
         <div className="login">
           <div className="ui form">

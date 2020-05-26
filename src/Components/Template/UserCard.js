@@ -96,16 +96,11 @@ class UserCard extends Component {
                     <option value="select">SELECT</option>
                     <option value="user">USER</option>
                     <option value="admin">ADMIN</option>
-                    <option value="user,admin">USER & ADMIN</option>
                   </select>
                 </span>
               ) : (
                 <span className="data-value">
-                  {this.props.obj.role.indexOf(",") > 0
-                    ? this.props.obj.role.split(",")[0] +
-                      " & " +
-                      this.props.obj.role.split(",")[1]
-                    : this.props.obj.role}
+                  {this.props.obj.role}
                 </span>
               )}
             </div>
