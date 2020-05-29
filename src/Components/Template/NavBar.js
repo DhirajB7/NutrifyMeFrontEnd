@@ -10,8 +10,8 @@ function NavBar(props) {
   <a className="item" href="/home">
     HOME
   </a>
-  <a className="item" href="/history">
-    HISTORY
+  <a className="item" href="/mymeals">
+    MY MEALS
   </a>
   <a className="item" href="/meals">
     ALL MEALS

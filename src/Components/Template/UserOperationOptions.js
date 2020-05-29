@@ -2,7 +2,7 @@ import React from 'react'
 import PageNotFound from './PageNotFound'
 import AdminMeal from './AdminMeal'
 import UserHome from './UserHome'
-import UserHistory from './UserHistory'
+import UserMeals from './UserMeals'
 
 function UserOperationOptions(props) {
 
@@ -14,11 +14,11 @@ function UserOperationOptions(props) {
 
         )
 
-    }else if(props.toOpen==="history"){
+    }else if(props.toOpen==="mymeals"){
 
         return(
 
-           <UserHistory/>
+           <UserMeals/>
 
             )
 

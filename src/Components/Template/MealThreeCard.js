@@ -23,7 +23,7 @@ function MealThreeCard(props) {
         <div className="ui six cards">
            
         {props.mealDataArray.map(element => {
-                return  (<MealCard key ={element.mealId} obj={element}/>)
+                return  (<MealCard key ={element.foodName} obj={element}/>)
             })}
            
         </div>

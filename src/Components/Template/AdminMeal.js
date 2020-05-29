@@ -25,14 +25,14 @@ class AdminMeal extends Component {
       render() {
     
         return (
-          <div>
+          
     
             <div className="cards-display">
               
               <MealThreeCard mealDataArray = {(this.state.mealData.length===parseInt(localStorage.getItem("mealsLength")))?this.state.mealData:"loading"}/>
               
             </div>
-          </div>
+         
         )
         
       }

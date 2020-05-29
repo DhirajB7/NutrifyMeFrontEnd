@@ -3,6 +3,8 @@ import InputFeild from '../Template/InputFeild'
 import OneLineGap from '../Template/OneLineGap'
 import PostUser from '../API/PostUser'
 import Message from '../Template/Message'
+import VerifyUsername from '../API/VerifyUsername'
+
 
 class SignUp extends Component {
 
@@ -14,35 +16,29 @@ class SignUp extends Component {
     cal:'',
     username:'',
     password:'',
-    operationDone:false
+    operationDone:false,
+    enteredUserName:'',
+    finalcheck:false
   }
 
 
   firstnameFetch = (data) => {
 
-   if(data.toString().match(/^[a-zA-Z]+$/)){
+  
 
     this.setState({
       firstname:data
     })
 
-   }else{
-      alert("FIRST NAME SHOULD BE ONLY ALPHABETS")
-   }
 
   }
 
   lastnameFetch = (data) => {
 
-     if(data.toString().match(/^[a-zA-Z]+$/)){
-
+     
     this.setState({
       lastname:data
     })
-
-   }else{
-      alert("LAST NAME SHOULD BE ONLY ALPHABETS")
-   }
 
   }
 
@@ -69,30 +65,57 @@ class SignUp extends Component {
       cal:data
     })
   }
+  
 
   usernameFetch = (data) => {
-    this.setState({
-      username:data
-    })
+
+  VerifyUsername(data)
+
+  this.setState({
+    enteredUserName:data
+  })
+
   }
 
   passwordFetch = (data) => {
+
     this.setState({
       password:data
     })
   }
 
-  submitClicked = () => {
-    if(this.state.firstname.length>0 && this.state.firstname.length>0 && this.state.firstname.length>0 && this.state.firstname.length>0 && this.state.firstname.length>0 && this.state.firstname.length>0){
-      PostUser(this.state)
+  verifyClicked = () => {
 
-      this.setState({
-        operationDone:true
-      })
+    if(localStorage.getItem('username')==='true'){
+
+      alert("USER NAME ALREADY EXIST")
       
-    }else{
-      alert("Kindly Check All Values.")
+     }else{
+   
+       this.setState({
+         username:this.state.enteredUserName,
+         finalcheck:true
+       })
+
+       localStorage.clear()
+
+        alert("USERNAME ACCEPTED. YOU CAN SUBMIT")
+     }
     }
+
+    submitClicked = () => {
+      if(this.state.firstname.length>0 && this.state.lastname.length>0 && this.state.phonenumber.length>0 && this.state.email.length>0 && this.state.cal.length>0 && this.state.username.length>0 && this.state.password.length>0){
+        PostUser(this.state)
+  
+        this.setState({
+          operationDone:true
+        })
+        
+      }else{
+        alert("Kindly Check All Values.")
+      }
+
+    
   }
 
 
@@ -137,11 +160,11 @@ class SignUp extends Component {
 
             <InputFeild label="Calories Per Day" type="number" placeholder="Calories" getValue={this.CaloriesFetch}/>
 
-            <InputFeild label="Username" type="text" placeholder="Username" getValue={this.usernameFetch}/>
+            <InputFeild label="Username" type="text" placeholder="Username" getValue={this.usernameFetch} />
 
-            <InputFeild label="Password" type="password" placeholder="Password" getValue={this.passwordFetch}/>
+           <InputFeild label="Password" type="password" placeholder="Password" getValue={this.passwordFetch}/>
 
-            <button className="ui button" onClick={this.submitClicked}>Submit</button>
+           {(this.state.finalcheck) ? <button className="ui button" onClick={this.submitClicked}>SUBMIT</button> : <button className="ui button" onClick={this.verifyClicked}>VERIFY</button>}
       </div>
 
         <OneLineGap/>

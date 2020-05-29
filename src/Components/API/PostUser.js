@@ -9,7 +9,6 @@ import { BaseURL } from './Properties';
   
   var raw = JSON.stringify(
     { 
-      "userId":data.username,
       "username":data.username,
       "firstname":data.firstname,
       "lastname":data.lastname,
