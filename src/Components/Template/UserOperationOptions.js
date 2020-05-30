@@ -3,6 +3,7 @@ import PageNotFound from './PageNotFound'
 import AdminMeal from './AdminMeal'
 import UserHome from './UserHome'
 import UserMeals from './UserMeals'
+import UserHistory from './UserHistory'
 
 function UserOperationOptions(props) {
 
@@ -14,7 +15,12 @@ function UserOperationOptions(props) {
 
         )
 
-    }else if(props.toOpen==="mymeals"){
+    }else if(props.toOpen==="history"){
+        return (
+            <UserHistory/>
+        )
+    }
+    else if(props.toOpen==="mymeals"){
 
         return(
 

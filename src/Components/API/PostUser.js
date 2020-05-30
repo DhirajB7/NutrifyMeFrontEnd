@@ -17,7 +17,8 @@ import { BaseURL } from './Properties';
       "phone":parseInt(data.phonenumber),
       "role":"USER",
       "caloriesPerDay":parseInt(data.cal),
-      "userStatus":false
+      "userStatus":false,
+      "history":""
     }
     );
   

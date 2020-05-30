@@ -24,6 +24,7 @@ function App(){
       <Route path = "/users" component={() => <Welcome open = "users"/>}/>
       <Route path = "/meals" component={() => <Welcome open = "meals"/>}/>
       <Route path = "/home" component={() => <Welcome open = "home"/>}/>
+      <Route path = "/history" component={() => <Welcome open = "history"/>}/>
       <Route path = "/mymeals" component={() => <Welcome open = "mymeals"/>}/>
       <Route path = "/logout" component={Logout}/>
       <Route component={PageNotFound}/>

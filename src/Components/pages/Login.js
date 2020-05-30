@@ -52,7 +52,6 @@ class Login extends Component {
         document.cookie = "Username="+this.state.username+"#"
         document.cookie = "isUserLoggedIn="+this.state.isUserLoggedIn+"#"
         document.cookie = "isAdminLoggedIn="+this.state.isAdminLoggedIn+"#"
-
       });
     } else {
       alert("WRONG USERNAME OR WORNG PASSWORD, TRY AGAIN.");

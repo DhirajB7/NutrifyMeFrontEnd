@@ -138,7 +138,7 @@ class UserCard extends Component {
         </div>
         <div className="extra content">
           <div className="right floated delete" onClick={this.deleteClicked}>
-            <i className="trash icon" />
+            <i className="trash alternate icon" />
             DELETE
           </div>
 

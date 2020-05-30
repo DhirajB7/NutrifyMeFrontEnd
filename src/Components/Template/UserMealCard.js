@@ -72,7 +72,7 @@ class UserMealCard extends Component {
           <br/>
             <span>New Description :
             <div className="new-description">
-            <textarea rows="4" cols="50" value={this.state.newDescription} onChange={this.changeTextArea}></textarea>
+            <textarea className = "ui form" rows="4" cols="50" value={this.state.newDescription} onChange={this.changeTextArea}></textarea>
             </div>
             </span>
             </React.Fragment>
@@ -86,7 +86,7 @@ class UserMealCard extends Component {
 
         <div className="extra content">
           <div className="right floated delete" onClick={this.deleteClicked}>
-            <i className="trash icon" />
+            <i className="trash alternate icon" />
             DELETE
           </div>
 
