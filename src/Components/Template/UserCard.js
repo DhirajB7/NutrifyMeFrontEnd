@@ -13,8 +13,9 @@ class UserCard extends Component {
   };
 
   deleteClicked = () => {
-    DeleteUser(this.props.obj.userId);
-    alert("USER " + this.props.obj.userId + " IS DELETED");
+    console.log(this.props.obj);
+    DeleteUser(this.props.obj.username);
+    alert("USER " + this.props.obj.username + " IS DELETED");
     window.location.reload(); //to see result soon
   };
 
@@ -37,7 +38,7 @@ class UserCard extends Component {
       isEditClicked: false,
     });
 
-    window.location.reload()
+    window.location.reload();
   };
 
   roleChanged = (event) => {
@@ -99,9 +100,7 @@ class UserCard extends Component {
                   </select>
                 </span>
               ) : (
-                <span className="data-value">
-                  {this.props.obj.role}
-                </span>
+                <span className="data-value">{this.props.obj.role}</span>
               )}
             </div>
             <br />

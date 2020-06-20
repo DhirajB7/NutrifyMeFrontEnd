@@ -1,62 +1,66 @@
-.Home, .pageNotFound, .welcome {
+.Home,
+.pageNotFound,
+.welcome,
+.noMealMessage {
   text-align: center;
   margin: 10%;
 }
 
-.signup,.login{
+.signup,
+.login {
   margin-top: 5%;
   margin-left: 30%;
   margin-right: 30%;
 }
 
-.edit{
-  color:blue;
+.edit {
+  color: blue;
   cursor: pointer;
 }
 
-.save{
-  color:green;
+.save {
+  color: green;
   cursor: pointer;
 }
 
-.delete{
+.delete {
   color: red;
   cursor: pointer;
 }
 
-.data-name{
+.data-name {
   color: gray;
 }
 
-.data-value{
+.data-value {
   color: green;
 }
 
-.cards-display{
+.cards-display {
   margin: 16px;
 }
 
-.signupLogin{
+.signupLogin {
   margin-top: 2%;
   margin-left: 2%;
 }
 
-.foodname{
+.foodname {
   color: green;
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
   font-weight: bolder;
 }
 
-.cal{
+.cal {
   color: red;
   font-size: large;
 }
 
-.desc{
+.desc {
   font-weight: bold;
 }
 
-.userNameInFoodCard{
+.userNameInFoodCard {
   color: teal;
 }
